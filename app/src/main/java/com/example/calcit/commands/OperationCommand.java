@@ -6,6 +6,6 @@ package com.example.calcit.commands;
 *
 * */
 public interface OperationCommand {
-    Integer execute();
-    Integer unexecute();
+    Double execute();
+    Double unexecute();
 }
