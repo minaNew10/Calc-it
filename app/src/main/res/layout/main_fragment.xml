@@ -14,28 +14,62 @@
 
 
         <Button
+            android:id="@+id/button_back"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_keyboard_backspace"
+            android:textSize="@dimen/textsize"
+            app:layout_constraintEnd_toEndOf="@+id/buttonDiv"
+            app:layout_constraintStart_toEndOf="@+id/buttonSum"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="C"
+            android:textSize="@dimen/textsize"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_dec"
+            app:layout_constraintStart_toEndOf="@+id/btn_dec"
+            app:layout_constraintTop_toTopOf="@+id/btn_dec" />
+
+        <Button
+            android:id="@+id/btn_dec"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="."
+            android:textSize="@dimen/textsize"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_zero"
+            app:layout_constraintStart_toEndOf="@+id/btn_zero"
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
             android:id="@+id/btn_equal"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="="
             android:textSize="@dimen/textsize"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_zero"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_zero"
-            app:layout_constraintTop_toTopOf="@+id/btn_zero" />
+            app:layout_constraintEnd_toEndOf="@+id/btn_redo"
+            app:layout_constraintStart_toStartOf="@+id/btn_undo"
+            app:layout_constraintTop_toTopOf="@+id/btn_clear" />
+
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="9dp"
-            android:layout_marginEnd="9dp"
-            app:layout_constraintBottom_toTopOf="@+id/button7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="91dp"
+            android:textColor="#070707"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/button8"
+            app:layout_constraintEnd_toStartOf="@+id/button_back"
+            app:layout_constraintStart_toStartOf="@+id/button9"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
 
         <Button
             android:id="@+id/button9"
@@ -184,7 +218,7 @@
             android:background="@drawable/ic_undo"
             android:padding="8dp"
             android:textSize="@dimen/textsize"
-            app:layout_constraintBottom_toTopOf="@+id/btn_equal"
+            app:layout_constraintBottom_toTopOf="@+id/btn_clear"
             app:layout_constraintEnd_toEndOf="@+id/buttonsub"
             app:layout_constraintStart_toStartOf="@+id/buttonsub"
             app:layout_constraintTop_toTopOf="@+id/button1" />
@@ -197,9 +231,9 @@
             android:background="@drawable/ic_redo"
             android:padding="8dp"
             android:textSize="@dimen/textsize"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_undo"
-            app:layout_constraintStart_toEndOf="@+id/btn_undo"
-            app:layout_constraintTop_toTopOf="@+id/btn_undo" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_undo"
+            app:layout_constraintEnd_toEndOf="@+id/btn_mul"
+            app:layout_constraintStart_toStartOf="@+id/btn_mul" />
 
         <Button
             android:id="@+id/buttonDiv"
@@ -232,9 +266,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/button_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -247,7 +280,7 @@
             app:layout_constraintEnd_toEndOf="@+id/button3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/button3"
-            tools:layout_editor_absoluteY="485dp" />
+            app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
