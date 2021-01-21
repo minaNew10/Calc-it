@@ -12,19 +12,28 @@ public class Calculator {
     }
 
 
-    public Integer execute(OperationCommand command){
+    public Double execute(OperationCommand command){
         mCommandManager.addOperation(command);
         return command.execute();
     }
 
-    public Integer undo(){
+    public Double undo(){
         OperationCommand command = mCommandManager.undo();
-        return command.unexecute();
+        if(command != null)
+            return command.unexecute();
+        else
+            return null;
     }
 
-    public Integer redo(){
+    public Double redo(){
         OperationCommand command = mCommandManager.redo();
-        return command.execute();
+        if(command != null)
+            return command.execute();
+        else
+            return null;
+    }
+    public void clearAllOperations(){
+        mCommandManager.clearAllOperations();
     }
 
     private class CommandManager {
@@ -40,15 +49,26 @@ public class Calculator {
         }
 
         public OperationCommand undo(){
-            OperationCommand lastCommand = historyList.pop();
-            redoList.push(lastCommand);
+            OperationCommand lastCommand = null;
+            if(!historyList.empty()) {
+                lastCommand = historyList.pop();
+                redoList.push(lastCommand);
+            }
             return lastCommand;
         }
 
         public OperationCommand redo(){
-            OperationCommand lastUndo = redoList.pop();
-            historyList.push(lastUndo);
+            OperationCommand lastUndo = null;
+            if(!redoList.empty()) {
+                redoList.pop();
+                historyList.push(lastUndo);
+            }
             return lastUndo;
+        }
+
+        public void clearAllOperations() {
+            historyList.clear();
+            redoList.clear();
         }
     }
 }
