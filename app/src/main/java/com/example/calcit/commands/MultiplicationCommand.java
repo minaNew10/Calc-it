@@ -1,6 +1,6 @@
 package com.example.calcit.commands;
 
-class MultiplicationCommand implements OperationCommand {
+public class MultiplicationCommand implements OperationCommand {
     Integer operand1, operand2,result;
     public MultiplicationCommand(Integer operand1, Integer num2) {
         this.operand1 = operand1;

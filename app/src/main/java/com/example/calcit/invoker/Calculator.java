@@ -4,7 +4,7 @@ import com.example.calcit.commands.OperationCommand;
 
 import java.util.Stack;
 
-class Calculator {
+public class Calculator {
     CommandManager mCommandManager;
 
     public Calculator() {
