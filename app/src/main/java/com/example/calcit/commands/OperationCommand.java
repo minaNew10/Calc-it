@@ -1,9 +1,8 @@
 package com.example.calcit.commands;
 
 /**
- * this is the parent of All mathematical operations
- *
-*
+ * This is the parent of All mathematical operations to help in
+ * undo and redo functionality
 * */
 public interface OperationCommand {
     Double execute();
