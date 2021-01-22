@@ -118,7 +118,7 @@ public class MainFragment extends Fragment {
             if(firstOperand != null && !binding.textView.toString().isEmpty()){
                 secOperand = Double.valueOf(binding.textView.getText().toString());
                 doOperation(mOperator);
-                resetOperations();
+
             }
 
         });
