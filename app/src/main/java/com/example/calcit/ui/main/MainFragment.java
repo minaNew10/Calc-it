@@ -185,19 +185,29 @@ public class MainFragment extends Fragment {
             }
         });
         binding.btnEqual.setOnClickListener(view -> {
-            
+
+            if(firstOperand != null && !binding.textView.toString().isEmpty()){
+                secOperand = Double.valueOf(binding.textView.getText().toString());
+                doOperation(mOperator);
+                resetOperations();
+            }
+
         });
         binding.btnClear.setOnClickListener(view -> {
-            binding.textView2.setText("");
-            binding.textView.setText("");
-            firstOperand = null;
-            secOperand = null;
-            mOperator = null;
-            mCalculator.clearAllOperations();
+            resetOperations();
         });
         binding.buttonBack.setOnClickListener(view -> {
             handleBackspace();
         });
+    }
+
+    private void resetOperations() {
+        binding.textView2.setText("");
+        binding.textView.setText("");
+        firstOperand = null;
+        secOperand = null;
+        mOperator = null;
+        mCalculator.clearAllOperations();
     }
 
     private void changeLastOperator(String operator) {
