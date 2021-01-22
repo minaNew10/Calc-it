@@ -108,8 +108,11 @@ public class MainFragment extends Fragment {
                     mOperator = Operator.ADD;
                     binding.textView2.append(" " + "+");
                 }
+            }else if(mOperator == null){
+                Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG).show();
             }else {
-                Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG);
+                changeLastOperator("+");
+                mOperator = Operator.ADD;
             }
         });
         binding.buttonsub.setOnClickListener(new View.OnClickListener() {
@@ -120,14 +123,18 @@ public class MainFragment extends Fragment {
                         mOperator = Operator.SUB;
                         firstOperand = Double.valueOf(binding.textView.getText().toString());
                         binding.textView.setText("");
+                        binding.textView2.setText(firstOperand.toString() + " -");
                     }
                     else {
                        doOperation(mOperator);
                        mOperator = Operator.SUB;
                        binding.textView2.append(" " + "-");
                     }
+                }else if(mOperator == null) {
+                    Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG);
+                    changeLastOperator("-");
+                    mOperator = Operator.SUB;
                 }
             }
         });
@@ -139,14 +146,18 @@ public class MainFragment extends Fragment {
                         mOperator = Operator.MUL;
                         firstOperand = Double.valueOf(binding.textView.getText().toString());
                         binding.textView.setText("");
+                        binding.textView2.setText(firstOperand.toString() + " *");
                     }
                     else {
                         doOperation(mOperator);
                         mOperator = Operator.MUL;
                         binding.textView2.append(" " + "*");
                     }
+                }else if(mOperator == null) {
+                    Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG);
+                    changeLastOperator("*");
+                    mOperator = Operator.MUL;
                 }
             }
         });
@@ -158,16 +169,23 @@ public class MainFragment extends Fragment {
                         mOperator = Operator.DIV;
                         firstOperand = Double.valueOf(binding.textView.getText().toString());
                         binding.textView.setText("");
+                        binding.textView2.setText(firstOperand.toString() + " /");
                     }
                     else {
                         doOperation(mOperator);
                         mOperator = Operator.DIV;
                         binding.textView2.append(" " + "/");
                     }
+                }else if(mOperator == null) {
+                    Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(getActivity(),"Please enter a number first",Toast.LENGTH_LONG);
+                    changeLastOperator("/");
+                    mOperator = Operator.DIV;
                 }
             }
+        });
+        binding.btnEqual.setOnClickListener(view -> {
+            
         });
         binding.btnClear.setOnClickListener(view -> {
             binding.textView2.setText("");
@@ -180,6 +198,16 @@ public class MainFragment extends Fragment {
         binding.buttonBack.setOnClickListener(view -> {
             handleBackspace();
         });
+    }
+
+    private void changeLastOperator(String operator) {
+        String curr = binding.textView2.getText().toString();
+        String after;
+        if(!curr.isEmpty()) {
+            after = curr.substring(0, curr.length() - 1);
+            binding.textView2.setText(after);
+            binding.textView2.append(operator);
+        }
     }
 
     private void handleBackspace() {
